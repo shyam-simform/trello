@@ -19,7 +19,7 @@ type SidebarItemPropType = {
   onExpand: (id: string) => void;
 };
 
-export const SidebarItem = ({
+export const  SidebarItem = ({
   isActive,
   isExpanded,
   onExpand,
@@ -31,22 +31,22 @@ export const SidebarItem = ({
     {
       label: "Board",
       icon: <Layout className="h-4 w-4 mr-2" />,
-      href: `/org/${org.id}`,
+      href: `/organization/${org.id}`,
     },
     {
       label: "Activity",
       icon: <Activity className="h-4 w-4 mr-2" />,
-      href: `/org/${org.id}/activity`,
+      href: `/organization/${org.id}/activity`,
     },
     {
       label: "Settings",
       icon: <Settings className="h-4 w-4 mr-2" />,
-      href: `/org/${org.id}/settings`,
+      href: `/organization/${org.id}/settings`,
     },
     {
       label: "Billing",
       icon: <CreditCard className="h-4 w-4 mr-2" />,
-      href: `/org/${org.id}/billing`,
+      href: `/organization/${org.id}/billing`,
     },
   ];
 
