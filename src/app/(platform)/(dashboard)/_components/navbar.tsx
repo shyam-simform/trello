@@ -2,18 +2,28 @@ import Logo from "@/components/logo";
 import { Button } from "@/components/ui/button";
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
 import { PlusIcon } from "lucide-react";
+import MobileSidebar from "./mobile-sidebar";
 
 const Navbar = () => {
   return (
     <nav className="fixed z-50 px-4 top-0 w-full h-14 border-b shadow-sm bg-white flex items-center">
+      <MobileSidebar />
       <div className="flex items-center gap-x-4">
         <div className="hidden md:flex">
           <Logo />
         </div>
-        <Button variant="primary" size="sm" className="rounded-sm hidden md:block h-auto py-1.5 px-2">
+        <Button
+          variant="primary"
+          size="sm"
+          className="rounded-sm hidden md:block h-auto py-1.5 px-2"
+        >
           Create
         </Button>
-        <Button variant="primary" size="sm" className="rounded-sm block md:hidden h-auto">
+        <Button
+          variant="primary"
+          size="sm"
+          className="rounded-sm block md:hidden h-auto"
+        >
           <PlusIcon className="h-4 w-4" />
         </Button>
       </div>
