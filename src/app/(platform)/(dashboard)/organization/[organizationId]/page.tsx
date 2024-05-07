@@ -1,12 +1,17 @@
-import { OrganizationSwitcher } from "@clerk/nextjs";
-import { auth } from "@clerk/nextjs/server";
+import { prisma } from "@/lib/db";
+import Form from "./form";
+import Board from "./board";
 
-const OrganizationIdPage = () => {
-  const { userId, orgId } = auth();
+const OrganizationIdPage = async () => {
+  const boards = await prisma.board.findMany();
   return (
-    <div>
-      {/* <OrganizationSwitcher hidePersonal/> */}
-      <h1>Organization</h1>
+    <div className="flex flex-col space-y-4">
+      <Form />
+      <div className="space-y-2">
+        {boards.map((board) => (
+          <Board key={board.id} title={board.title} id={board.id} />
+        ))}
+      </div>
     </div>
   );
 };
