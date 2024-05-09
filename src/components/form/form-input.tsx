@@ -22,7 +22,7 @@ interface FormInputProps {
   onBlur?: () => void;
 }
 
-export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
+const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
   (
     {
       id,
@@ -73,3 +73,4 @@ export const FormInput = forwardRef<HTMLInputElement, FormInputProps>(
 );
 
 FormInput.displayName = "FormInput";
+export default FormInput;
