@@ -17,39 +17,37 @@ const textFont = Poppins({
 
 export default function MarketingPage() {
   return (
-    <>
-      <div className="flex items-center justify-center flex-col">
-        <div
-          className={cn(
-            "flex items-center justify-center flex-col",
-            headingFont.className
-          )}
-        >
-          <div className="mb-4 flex items-center border shadow-sm p-4 bg-amber-100 text-amber-700 rounded-full uppercase">
-            <Medal className="h-6 w-6 mr-2" />
-            No 1 Task Managment
-          </div>
-          <h1 className="text-3xl md:text-6xl text-center text-neutral-800 mb-6">
-            Taskify Help Team Move
-          </h1>
-          <div className="text-3xl md:text-6xl bg-gradient-to-r from-fuchsia-600 to-pink-600 px-4 p-2 rounded-md pb-4 w-fit text-white">
-            Work Forward
-          </div>
+    <div className="flex items-center justify-center flex-col">
+      <div
+        className={cn(
+          "flex items-center justify-center flex-col",
+          headingFont.className
+        )}
+      >
+        <div className="mb-4 flex items-center border shadow-sm p-4 bg-amber-100 text-amber-700 rounded-full uppercase">
+          <Medal className="h-6 w-6 mr-2" />
+          No 1 Task Managment
         </div>
-        <div
-          className={cn(
-            "text-sm md:text-xl text-neutral-400 mt-4 max-w-xs md:max-w-2xl text-center",
-            textFont.className
-          )}
-        >
-          Collaborate, manage projects, and reach new productivity peaks. From
-          high rises to thr home office, the way your team works is unique -
-          accomplish it all with Taskify.
+        <h1 className="text-3xl md:text-6xl text-center text-neutral-800 mb-6">
+          Taskify Help Team Move
+        </h1>
+        <div className="text-3xl md:text-6xl bg-gradient-to-r from-fuchsia-600 to-pink-600 px-4 p-2 rounded-md pb-4 w-fit text-white">
+          Work Forward
         </div>
-        <Button className="mt-6" size="lg" asChild>
-          <Link href="/sign-up">Get Taskify for free</Link>
-        </Button>
       </div>
-    </>
+      <div
+        className={cn(
+          "text-sm md:text-xl text-neutral-400 mt-4 max-w-xs md:max-w-2xl text-center",
+          textFont.className
+        )}
+      >
+        Collaborate, manage projects, and reach new productivity peaks. From
+        high rises to thr home office, the way your team works is unique -
+        accomplish it all with Taskify.
+      </div>
+      <Button className="mt-6" size="lg" asChild>
+        <Link href="/sign-up">Get Taskify for free</Link>
+      </Button>
+    </div>
   );
 }
