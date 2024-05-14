@@ -22,7 +22,7 @@ const BoardList = async () => {
       createdAt: "desc",
     },
   });
-  console.log(boards, ">>>> boards");
+
   return (
     <div className="space-y-4">
       <div className="flex items-center font-semibold text-neutral-700">
