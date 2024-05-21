@@ -6,6 +6,10 @@ import ListForm from "./list-form";
 import ListItem from "./list-item";
 
 import { DragDropContext, Droppable } from "@hello-pangea/dnd";
+import { useAction } from "@/hooks/use-action";
+import { updateListOrder } from "@/actions/update-list-order";
+import { toast } from "sonner";
+import { updateCardOrder } from "@/actions/update-card-order";
 
 interface ListContainerProps {
   boardId: string;
@@ -25,6 +29,25 @@ function reorder<T>(list: T[], startIndex: number, endIndex: number) {
 const ListContainer = ({ boardId, data }: ListContainerProps) => {
   const [orderedData, setOrderedData] = useState(data);
   console.log(orderedData, "orderedData");
+
+  const { execute: executeUpdateListOrder } = useAction(updateListOrder, {
+    onSuccess: () => {
+      toast.success("List reorded successfully");
+    },
+    onError: (error) => {
+      toast.error(error);
+    },
+  });
+
+  const { execute: executeUpdateCardOrder } = useAction(updateCardOrder, {
+    onSuccess: () => {
+      toast.success("Card reorded successfully");
+    },
+    onError: (error) => {
+      toast.error(error);
+    },
+  });
+
   useEffect(() => {
     setOrderedData(data);
   }, [data]);
@@ -47,13 +70,12 @@ const ListContainer = ({ boardId, data }: ListContainerProps) => {
 
     // User moves a list
     if (type === "list") {
-      const itmes = reorder(orderedData, source.index, destination.index).map(
+      const items = reorder(orderedData, source.index, destination.index).map(
         (item, index) => ({ ...item, order: index })
       );
 
-      setOrderedData(itmes);
-
-      // TODO: Trigger Server Action
+      setOrderedData(items);
+      executeUpdateListOrder({ items, boardId });
     }
 
     // user select the card
@@ -102,6 +124,8 @@ const ListContainer = ({ boardId, data }: ListContainerProps) => {
         sourceList.cards = reorderCards;
 
         setOrderedData(newOrderedData);
+        executeUpdateCardOrder({ boardId: boardId, items: reorderCards });
+
         // TODO: Trigger server Action
         // User move the card into the onther list
       } else {
@@ -125,6 +149,7 @@ const ListContainer = ({ boardId, data }: ListContainerProps) => {
         });
 
         setOrderedData(newOrderedData);
+        executeUpdateCardOrder({ boardId: boardId, items: destList.cards });
       }
     }
   };
